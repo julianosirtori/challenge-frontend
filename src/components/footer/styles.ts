@@ -8,36 +8,18 @@ export const Container = styled.div`
     padding: 16px;
     text-align: center;
     height: auto;
-    max-width: 375px;
-
-
-    @media (min-width: 395px) {
-        max-width: 395px;
-    }
-  
-    @media (min-width: 414px) {
-        max-width: 414px;
-    }
-    
-    @media (min-width: 768px) {
-        max-width: 768px;
-        margin: 20px auto;
-    }
-    
-    @media (min-width: 912px) {
-        max-width: 912px;
-    }
 
     @media (min-width: 992px) {
       width: 100%;
       max-width: none;
-      padding: 16px 0 0;
+      padding: 16px 0;
+      
       align-items: baseline;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       position: fixed;
-      bottom: -23px;
+      bottom: 0;
       left: 0;
       right: 0;
       z-index: 2;

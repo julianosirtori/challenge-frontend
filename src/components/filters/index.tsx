@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Content,
   ContentTitle,
@@ -9,7 +8,7 @@ import {
 import { FilterProps } from "./types";
 import { filtersWithInitialState } from "./constants";
 
-const Filter: React.FC = ({
+const Filter = ({
   mainTitle,
   hasSelectedFilters,
   resetFilters,

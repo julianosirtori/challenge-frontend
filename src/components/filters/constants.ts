@@ -35,10 +35,12 @@ export const filtersWithInitialState: FilterContentProps = {
       items: [
         {
           id: 1,
+          label: 'disponível',
           checked: false,
         },
         {
           id: 2,
+          label: 'não disponível',
           checked: false,
         },
       ],
@@ -48,10 +50,12 @@ export const filtersWithInitialState: FilterContentProps = {
       items: [
         {
           id: 1,
+          label: 'Epub',
           checked: false,
         },
         {
           id: 2,
+          label: 'PDF',
           checked: false,
         },
       ],

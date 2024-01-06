@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "../../components/header";
 import Filters from "../../components/filters";
 import {
     Container,
@@ -10,35 +8,45 @@ import {
   ContentResultsTitle,
   ContentResultsWrapper,
 } from "./styles";
-import Footer from "../../components/footer";
-import {
-  footerAllrightsReserved,
-  helpLink,
-  privacyAndPolicy,
-  termsAndUsage,
-} from "../../constants";
-import { books } from "../../components/shelves/constants";
 
-const Search: React.FC = () => {
+import { useSearchParams } from "react-router-dom";
+import { useInfiniteQueryBooks } from "../../hooks/queries/books";
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from "react";
+
+const Search = () => {
+  const [ searchParmas ] = useSearchParams()
+  const { ref, inView } = useInView()
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQueryBooks({
+    q: searchParmas.get('q') || ''
+  })
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage()
+    }
+  }, [inView])
+
   return (
-    <>
-      <Header />
-      <Container>
+    <Container>
         <Content>
         <Filters />
         <ContentResults>
-          {books.map((shelf) => (
+          {data?.pages.map((page) => (
             <>
-              {shelf.booksShelf.map((book) => (
+              {page.items?.map((book) => (
                 <ContentResultsWrapper>
                   <ContentResultsCover>
-                    <img src={book.urlImage} alt={book.slug} />
+                    <img src={book.volumeInfo?.imageLinks?.thumbnail} alt={book.volumeInfo.title} />
                   </ContentResultsCover>
                   <ContentResultsTitle>
-                    <label>{book.title} </label>
+                    <label>{book.volumeInfo.title} </label>
                   </ContentResultsTitle>
                   <ContentResultsCategory>
-                    <span>{book.autor}</span>
+                    {book.volumeInfo.authors?.map(author => (
+                      <span key={author}>{author}</span>
+                    ))}
                   </ContentResultsCategory>
                 </ContentResultsWrapper>
               ))}
@@ -46,14 +54,20 @@ const Search: React.FC = () => {
           ))}
         </ContentResults>
         </Content>
+        <div>
+            <button
+              ref={ref}
+              onClick={() => fetchNextPage()}
+              disabled={!hasNextPage || isFetchingNextPage}
+            >
+              {isFetchingNextPage
+                ? 'Loading more...'
+                : hasNextPage
+                ? 'Load Newer'
+                : 'Nothing more to load'}
+            </button>
+          </div>
       </Container>
-      <Footer
-        text={footerAllrightsReserved}
-        privacyText={privacyAndPolicy}
-        termsAndUsageText={termsAndUsage}
-        helpText={helpLink}
-      />
-    </>
   );
 };
 

@@ -1,20 +1,11 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
-import Shelves from "./components/shelves";
-import { footerAllrightsReserved, helpLink, privacyAndPolicy, termsAndUsage } from "./constants";
+import { Providers } from "./providers";
+import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Shelves />
-      <Footer
-        text={footerAllrightsReserved}
-        privacyText={privacyAndPolicy}
-        termsAndUsageText={termsAndUsage}
-        helpText={helpLink}
-      />
-    </>
+    <Providers>
+     <GlobalStyle/>
+    </Providers>
   );
 }
 

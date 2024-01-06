@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Container, Content, ContentSearch, ContentUser } from "./styles";
+import React from "react";
+import { Container, Content, ContentUser } from "./styles";
 import Search from "../search";
 
 const Header: React.FC = () => {
-  const [term, setTerm] = useState("");
   return (
     <Container>
       <Content>
@@ -17,9 +16,7 @@ const Header: React.FC = () => {
             />
           </a>
         </div>
-        <ContentSearch>
-          <Search value={term} />
-        </ContentSearch>
+        <Search />
         <ContentUser>
           <p>login</p>
         </ContentUser>
