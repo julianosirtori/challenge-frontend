@@ -1,11 +1,14 @@
-import { Router } from "./routes";
-import { StylesManager } from "./styles/StylesManager";
+import { QueryClientProvider } from "@/lib/reactQuery";
+import { Router } from "@/routes";
+import { StylesManager } from "@/styles/StylesManager";
 
 function App() {
   return (
-    <StylesManager>
-      <Router />
-    </StylesManager>
+    <QueryClientProvider>
+      <StylesManager>
+        <Router />
+      </StylesManager>
+    </QueryClientProvider>
   );
 }
 
