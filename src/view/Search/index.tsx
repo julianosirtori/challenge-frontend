@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/header";
 import {
-    Container,
+  Container,
   Content,
   ContentResults,
   ContentResultsCategory,
@@ -24,25 +24,25 @@ const Search: React.FC = () => {
       <Header />
       <Container>
         <Content>
-        <ContentResults>
-          {books.map((shelf) => (
-            <>
-              {shelf.booksShelf.map((book) => (
-                <ContentResultsWrapper>
-                  <ContentResultsCover>
-                    <img src={book.urlImage} alt={book.slug} />
-                  </ContentResultsCover>
-                  <ContentResultsTitle>
-                    <label>{book.title} </label>
-                  </ContentResultsTitle>
-                  <ContentResultsCategory>
-                    <span>{book.autor}</span>
-                  </ContentResultsCategory>
-                </ContentResultsWrapper>
-              ))}
-            </>
-          ))}
-        </ContentResults>
+          <ContentResults>
+            {books.map((shelf) => (
+              <>
+                {shelf.booksShelf.map((book) => (
+                  <ContentResultsWrapper key={book.slug}>
+                    <ContentResultsCover>
+                      <img src={book.urlImage} alt={book.slug} />
+                    </ContentResultsCover>
+                    <ContentResultsTitle>
+                      <label>{book.title} </label>
+                    </ContentResultsTitle>
+                    <ContentResultsCategory>
+                      <span>{book.autor}</span>
+                    </ContentResultsCategory>
+                  </ContentResultsWrapper>
+                ))}
+              </>
+            ))}
+          </ContentResults>
         </Content>
       </Container>
       <Footer

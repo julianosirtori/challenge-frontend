@@ -6,7 +6,7 @@ import {
   FilterTitle,
   FilterContent,
 } from "./styles";
-import { FilterProps } from "./types";
+import { FilterProps, Item } from "./types";
 import { filtersWithInitialState } from "./constants";
 
 const Filter: React.FC<FilterProps> = ({
@@ -28,7 +28,7 @@ const Filter: React.FC<FilterProps> = ({
           <FilterTitle>{category.title}</FilterTitle>
           <FilterContent>
             <ul>
-              {category?.items?.map((item: any) => (
+              {category?.items?.map((item: Item) => (
                 <li key={item.id}>
                   <input
                     name={item.label}
