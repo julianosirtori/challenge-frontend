@@ -1,24 +1,5 @@
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import Shelves from "@/components/shelves";
-import {
-  footerAllrightsReserved,
-  helpLink,
-  privacyAndPolicy,
-  termsAndUsage,
-} from "../../constants";
+import Shelves from "../../components/shelves";
 
-function Home() {
-  <>
-    <Header />
-    <Shelves />
-    <Footer
-      text={footerAllrightsReserved}
-      privacyText={privacyAndPolicy}
-      termsAndUsageText={termsAndUsage}
-      helpText={helpLink}
-    />
-  </>;
+export function Home() {
+  return <Shelves />;
 }
-
-export default Home;
