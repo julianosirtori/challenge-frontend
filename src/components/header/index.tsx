@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Content, ContentSearch, ContentUser } from "./styles";
+import { Container, Content, ContentUser } from "./styles";
 import Search from "../search";
 
 const Header: React.FC = () => {
@@ -16,9 +16,7 @@ const Header: React.FC = () => {
             />
           </a>
         </div>
-        <ContentSearch>
-          <Search  />
-        </ContentSearch>
+        <Search />
         <ContentUser>
           <p>login</p>
         </ContentUser>
