@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "path";
 
 const pathEslintFileConfig = path.relative(process.cwd(), ".eslintrc.cjs");
 
@@ -7,6 +7,6 @@ const buildEslintCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(" ")}`;
 
-module.exports = {
+export default {
   "*.{js,jsx,ts,tsx}": [buildEslintCommand, "prettier --write"],
 };
