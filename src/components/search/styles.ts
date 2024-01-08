@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { ReactComponent as SearchIcon } from "@/assets/search-icon.svg";
 
 export const Container = styled.div`
   position: relative;
@@ -47,10 +46,9 @@ export const InputSearch = styled.input`
   }
 `;
 
-export const Icon = styled(SearchIcon)`
-  &:hover {
-    cursor: pointer;
-  }
+export const SearchButton = styled.button`
+  background-color: #f1f7fc;
+  padding: 4px;
 `;
 
 export const ResultSearch = styled.div`

@@ -4,7 +4,7 @@ import {
   FetchVolumesResponse,
 } from "./types";
 
-const googleApiHost = process.env.VITE_HOST_GOOGLE_API;
+const googleApiHost = import.meta.env.VITE_HOST_GOOGLE_API;
 
 export function normalizeFetchVolumes(params: FetchVolumesParams) {
   const normalizeParams: FetchVolumesQueryParams = {

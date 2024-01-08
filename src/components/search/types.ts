@@ -1,3 +1,7 @@
 export type SearchProps = {
-    value: string
-}
+  value: string;
+};
+
+export type UseSearchProps = {
+  disabled?: boolean;
+};
