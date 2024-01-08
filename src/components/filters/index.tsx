@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Content,
   ContentTitle,
@@ -6,23 +5,18 @@ import {
   FilterTitle,
   FilterContent,
 } from "./styles";
-import { FilterProps, Item } from "./types";
+import { Item } from "./types";
 import { filtersWithInitialState } from "./constants";
 
-const Filter: React.FC<FilterProps> = ({
-  mainTitle,
-  hasSelectedFilters,
-  resetFilters,
-}) => {
+const Filter = () => {
   const handleToggleCheckbox = () => {
     console.log("click");
   };
+
   return (
     <Content>
-      <ContentTitle>{mainTitle}</ContentTitle>
-      {hasSelectedFilters && (
-        <Button onClick={resetFilters}>Limpar Filtro</Button>
-      )}
+      <ContentTitle>Filtros</ContentTitle>
+      <Button>Limpar Filtro</Button>
       {Object.entries(filtersWithInitialState).map(([filterType, category]) => (
         <div key={filterType}>
           <FilterTitle>{category.title}</FilterTitle>

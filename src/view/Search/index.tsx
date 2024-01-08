@@ -1,3 +1,5 @@
+import Filter from "@/components/filters";
+import { books } from "@/components/shelves/constants";
 import {
   Container,
   Content,
@@ -7,17 +9,17 @@ import {
   ContentResultsTitle,
   ContentResultsWrapper,
 } from "./styles";
-import { books } from "../../components/shelves/constants";
 
 export const Search = () => {
   return (
     <Container>
       <Content>
+        <Filter />
         <ContentResults>
           {books.map((shelf) => (
             <>
-              {shelf.booksShelf.map((book) => (
-                <ContentResultsWrapper key={book.slug}>
+              {shelf.booksShelf.map((book, index) => (
+                <ContentResultsWrapper key={index}>
                   <ContentResultsCover>
                     <img src={book.urlImage} alt={book.slug} />
                   </ContentResultsCover>
