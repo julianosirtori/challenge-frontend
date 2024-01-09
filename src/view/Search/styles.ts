@@ -38,6 +38,12 @@ export const ContentResultsWrapper = styled.div`
 `;
 
 export const ContentResultsCover = styled.div`
+  background-image: url("./src/assets/image-fallback.png");
+  background-size: cover;
+  background-position: center;
+  width: 124px;
+  height: 185px;
+
   img {
     width: 124px;
     height: 185px;
@@ -55,5 +61,8 @@ export const ContentResultsCategory = styled.div`
   span {
     font-size: 14px;
     color: #9eaeb7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 30px;
   }
 `;
