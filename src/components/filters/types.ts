@@ -20,7 +20,7 @@ interface Items {
 export type Item = {
   id: number;
   label: string;
-  checked: boolean;
+  name: string;
   rangeValue?: {
     min: number;
     max: number;

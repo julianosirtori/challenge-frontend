@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
@@ -34,8 +34,8 @@ export const Search = () => {
       <Content>
         <Filter />
         <ContentResults>
-          {data?.pages.map((page) => (
-            <>
+          {data?.pages.map((page, index) => (
+            <Fragment key={index}>
               {page.items?.map((book) => (
                 <ContentResultsWrapper key={book.id}>
                   <ContentResultsCover>
@@ -54,7 +54,7 @@ export const Search = () => {
                   </ContentResultsCategory>
                 </ContentResultsWrapper>
               ))}
-            </>
+            </Fragment>
           ))}
         </ContentResults>
         <div>
