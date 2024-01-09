@@ -25,7 +25,7 @@ const Search = () => {
     disabled: isOpenAutoComplete,
   });
 
-  const navigateToSearchPage = (query: string = "") => {
+  const navigateToSearchPage = (query: string = search) => {
     navigate(`/search?q=${query}`);
   };
 
@@ -45,6 +45,7 @@ const Search = () => {
           onBlur={closeResults}
           onFocus={() => setIsOpenAutoComplete(true)}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyUpCapture={(e) => e.key === "Enter" && navigateToSearchPage()}
           value={search}
           type="text"
           data-testid="search-input"
