@@ -47,6 +47,7 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           type="text"
+          data-testid="search-input"
           aria-label="autocomplete-input"
           placeholder="Pesquisar..."
         />
