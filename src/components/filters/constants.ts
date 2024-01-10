@@ -1,4 +1,4 @@
-import { FilterContentProps } from "./types";
+import { FilterContentProps } from "./partials/ContentFilter/types";
 
 export const filtersWithInitialState: FilterContentProps = {
   price: {

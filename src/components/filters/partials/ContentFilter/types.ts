@@ -26,3 +26,7 @@ export type Item = {
     max: number;
   };
 };
+
+export type ContentFilterProps = {
+  onClose?: () => void;
+};

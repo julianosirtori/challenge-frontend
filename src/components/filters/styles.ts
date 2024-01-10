@@ -1,46 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Content = styled.div`
+export const ContainerDesktop = styled.div`
   background-color: #fff;
-  width: 260px;
 `;
-export const ContentTitle = styled.p`
-  color: #9eaeb7;
-  font-size: 16px;
-  font-weight: 700;
-`;
-export const Button = styled.button`
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 4px 16px;
-  text-transform: uppercase;
-  background-color: #adb7bf;
-  margin: 16px 0;
-`;
-export const FilterTitle = styled.p`
-  color: #053b4b;
-  font-size: 16px;
-  font-weight: 700;
-`;
-export const FilterContent = styled.div`
-  & > ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 8px;
-  }
-  & > ul > li {
-    margin-bottom: 3px;
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
 
-    input {
-      margin-right: 4px;
-    }
-
-    span {
-      color: #053b4b;
-    }
-  }
+export const ContainerMobile = styled.div<{ isOpen: boolean }>`
+  display: none;
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #fff;
+      padding: 32px;
+      width: 100vw;
+      height: 100vh;
+    `}
 `;
