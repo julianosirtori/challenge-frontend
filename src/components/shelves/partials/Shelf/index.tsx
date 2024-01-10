@@ -1,3 +1,5 @@
+import ContentLoader from "react-content-loader";
+
 import Carousel from "@/components/carousel";
 import {
   Container,
@@ -16,7 +18,13 @@ export function Shelf({ title, query, isHighlight }: CategoryProps) {
   });
 
   if (isLoading) {
-    return <span>Carregando...</span>;
+    return (
+      <Container>
+        <ContentLoader width="100%" height="300">
+          <rect x="0" y="32" rx="4" ry="4" width="100%" height="300" />
+        </ContentLoader>
+      </Container>
+    );
   }
 
   if (!data) {
