@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  margin: 140px 0;
+  width: 100%;
 `;
 
 export const Content = styled.div`
@@ -13,13 +13,15 @@ export const Content = styled.div`
   }
 `;
 
-export const ContentList = styled.div`
+export const ContentList = styled.div<{ isHighlight?: boolean }>`
   width: 100%;
   padding: 16px;
   max-width: 375px;
-  &:nth-child(3) {
-    background-color: #daf6f3;
-  }
+  ${({ isHighlight }) =>
+    isHighlight &&
+    css`
+      background-color: #daf6f3;
+    `}
 
   @media (min-width: 395px) {
     max-width: 395px;
@@ -79,8 +81,4 @@ export const TitleCategory = styled.div`
     padding: 30px 0 0;
     max-width: 1296px;
   }
-`;
-
-export const Shelf = styled.div`
-  width: 100%;
 `;

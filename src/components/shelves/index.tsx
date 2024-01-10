@@ -1,37 +1,17 @@
-import React from "react";
-import {
-  Container,
-  Content,
-  ContentItem,
-  ContentList,
-  Shelf,
-  TitleCategory,
-} from "./styles";
-import { settings } from "../carousel/constants";
-import Carousel from "../carousel";
-import { books } from "./constants";
+import { Container } from "./styles";
+import { Shelf } from "./partials/Shelf";
 
-const Shelves: React.FC = () => {
+const Shelves = () => {
   return (
     <Container>
-      <Shelf>
-        {books.map((shelf) => {
-          return (
-            <ContentList key={shelf.id}>
-              <TitleCategory>{shelf.shelfCategory}</TitleCategory>
-              <Content>
-                <Carousel settings={settings} spaceBetweenItems="16px">
-                  {shelf.booksShelf.map((book) => (
-                    <ContentItem key={book.title}>
-                      <img src={book.urlImage} alt={book.slug} />
-                    </ContentItem>
-                  ))}
-                </Carousel>
-              </Content>
-            </ContentList>
-          );
-        })}
-      </Shelf>
+      <Shelf title="Aventura" query='inauthor:"Júlio Verne"' />
+      <Shelf title="Ficção" query='inauthor:"Isaac Asimov"' />
+      <Shelf
+        title="Destaque"
+        query='inauthor:"Júlio Verne"'
+        isHighlight={true}
+      />
+      <Shelf title="Ação" query='inauthor:"J.R.R. Tolkien"' />
     </Container>
   );
 };
