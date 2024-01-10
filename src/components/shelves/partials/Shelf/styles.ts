@@ -6,46 +6,18 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-
-  @media (min-width: 1408px) {
-    max-width: 1920px;
-    margin: 20px auto;
-  }
+  max-width: 1216px;
+  margin: auto;
 `;
 
 export const ContentList = styled.div<{ isHighlight?: boolean }>`
   width: 100%;
   padding: 16px;
-  max-width: 375px;
   ${({ isHighlight }) =>
     isHighlight &&
     css`
       background-color: #daf6f3;
     `}
-
-  @media (min-width: 395px) {
-    max-width: 395px;
-  }
-
-  @media (min-width: 414px) {
-    max-width: 414px;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 768px;
-  }
-
-  @media (min-width: 820px) {
-    max-width: 820px;
-  }
-
-  @media (min-width: 912px) {
-    max-width: 912px;
-  }
-
-  @media (min-width: 992px) {
-    max-width: none;
-  }
 `;
 
 export const ContentItem = styled.div`
@@ -56,16 +28,7 @@ export const ContentItem = styled.div`
   > img {
     width: 198px;
     height: 296px;
-  }
-
-  @media (min-width: 768px) {
     max-width: 768px;
-    width: 100%;
-    margin: 20px auto;
-  }
-
-  @media (min-width: 992px) {
-    max-width: 1296px;
   }
 `;
 
