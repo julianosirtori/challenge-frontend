@@ -66,7 +66,7 @@ export const ResultSearch = styled.div`
   box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28);
 `;
 
-export const ResultSearchItem = styled.div`
+export const ResultSearchItem = styled.div<{ highlight: boolean }>`
   padding: 8px;
   display: flex;
   flex-direction: row;
@@ -86,6 +86,14 @@ export const ResultSearchItem = styled.div`
     background-color: #406a76;
     color: #f1f7fc;
   }
+
+  ${({ highlight }) =>
+    highlight &&
+    css`
+      cursor: pointer;
+      background-color: #406a76;
+      color: #f1f7fc;
+    `}
 `;
 
 export const ResultSearchButtons = styled.div`
