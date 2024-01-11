@@ -7,26 +7,22 @@ export const filtersWithInitialState: FilterContentProps = {
       {
         id: 1,
         label: "de R$0 até R$30",
-        name: "price-1",
+        handle: "byRangePrice0To30",
       },
       {
         id: 2,
         label: "de R$31 até R$50",
-        name: "price-2",
+        handle: "byRangePrice31To50",
       },
       {
         id: 3,
         label: "de R$51 até R$100",
-        name: "price-3",
-        rangeValue: {
-          min: 51,
-          max: 100,
-        },
+        handle: "byRangePrice51To100",
       },
       {
         id: 4,
         label: "Mais de R$100",
-        name: "price",
+        handle: "byRangePriceMoreThen101",
       },
     ],
   },
@@ -36,12 +32,12 @@ export const filtersWithInitialState: FilterContentProps = {
       {
         id: 1,
         label: "não disponível",
-        name: "available-1",
+        handle: "byNotAvailableToSell",
       },
       {
         id: 2,
         label: "disponível",
-        name: "available-2",
+        handle: "byAvailableToSell",
       },
     ],
   },
@@ -50,13 +46,13 @@ export const filtersWithInitialState: FilterContentProps = {
     items: [
       {
         id: 1,
-        label: "Epub",
-        name: "format-1",
+        label: "ePub",
+        handle: "byEpubFormat",
       },
       {
         id: 2,
         label: "PDF",
-        name: "format-2",
+        handle: "byPDFFormat",
       },
     ],
   },

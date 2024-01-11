@@ -20,11 +20,7 @@ interface Items {
 export type Item = {
   id: number;
   label: string;
-  name: string;
-  rangeValue?: {
-    min: number;
-    max: number;
-  };
+  handle: string;
 };
 
 export type ContentFilterProps = {

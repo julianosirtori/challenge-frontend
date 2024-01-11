@@ -3,15 +3,16 @@ import { useState } from "react";
 import { ContainerDesktop, ContainerMobile } from "./styles";
 import { ContentFilter } from "./partials/ContentFilter";
 
-const Filter = () => {
+export function Filter() {
   const [showFilter, setShowFilter] = useState(false);
 
   const { width } = useWindowSize();
+
   const isMobile = width < 768;
 
   if (!isMobile) {
     return (
-      <ContainerDesktop>
+      <ContainerDesktop data-testid="container-desktop">
         <ContentFilter />
       </ContainerDesktop>
     );
@@ -19,12 +20,15 @@ const Filter = () => {
 
   return (
     <>
-      <button onClick={() => setShowFilter(true)}>Exibir Filtros</button>
-      <ContainerMobile isOpen={showFilter}>
+      <button
+        data-testid="button-show-filter"
+        onClick={() => setShowFilter(true)}
+      >
+        Exibir Filtros
+      </button>
+      <ContainerMobile isOpen={showFilter} data-testid="container-mobile">
         <ContentFilter onClose={() => setShowFilter(false)} />
       </ContainerMobile>
     </>
   );
-};
-
-export default Filter;
+}

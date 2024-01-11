@@ -18,7 +18,7 @@ export const ContentFilter = ({ onClose }: ContentFilterProps) => {
     setSearchParams((searchParams) => {
       Object.entries(filtersWithInitialState).forEach(([, category]) => {
         category?.items?.map((item: Item) => {
-          searchParams.delete(item.name);
+          searchParams.delete(item.handle);
         });
       });
       return searchParams;
@@ -31,10 +31,10 @@ export const ContentFilter = ({ onClose }: ContentFilterProps) => {
   ) => {
     setSearchParams((searchParams) => {
       if (!e.target.checked) {
-        searchParams.delete(item.name);
+        searchParams.delete(item.handle);
         return searchParams;
       }
-      searchParams.set(item.name, "1");
+      searchParams.set(item.handle, "1");
 
       return searchParams;
     });
@@ -42,7 +42,7 @@ export const ContentFilter = ({ onClose }: ContentFilterProps) => {
   };
 
   return (
-    <Content>
+    <Content data-testid="filter-content">
       <ContentTitle>Filtros</ContentTitle>
       <WrapperFilter>
         {Object.entries(filtersWithInitialState).map(
@@ -52,15 +52,16 @@ export const ContentFilter = ({ onClose }: ContentFilterProps) => {
               <FilterContent>
                 <ul>
                   {category?.items?.map((item: Item) => (
-                    <li key={item.name}>
+                    <li key={item.handle}>
                       <input
-                        id={item.name}
-                        name={item.name}
-                        checked={!!searchParams.get(item.name)}
+                        data-testid={`filter-checkbox-${item.handle}`}
+                        id={item.handle}
+                        name={item.handle}
+                        checked={!!searchParams.get(item.handle)}
                         onChange={(e) => handleChangeFilter(item, e)}
                         type="checkbox"
                       />
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.handle}>{item.label}</label>
                     </li>
                   ))}
                 </ul>
@@ -70,7 +71,9 @@ export const ContentFilter = ({ onClose }: ContentFilterProps) => {
         )}
       </WrapperFilter>
       {searchParams.size > 1 && (
-        <Button onClick={clearFilters}>Limpar Filtro</Button>
+        <Button data-testid="btn-clear-filters" onClick={clearFilters}>
+          Limpar Filtro
+        </Button>
       )}
     </Content>
   );

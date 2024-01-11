@@ -15,16 +15,17 @@ export type FetchVolumesQueryParams = {
 export type FetchVolumesResponse = {
   kind: string;
   totalItems: number;
-  items: Books[];
+  items: Book[];
 };
 
-export interface Books {
+export interface Book {
   kind: string;
   id: string;
   etag: string;
   selfLink: string;
   volumeInfo: VolumeInfo;
   saleInfo: SaleInfo;
+  accessInfo: AccessInfo;
 }
 
 interface VolumeInfo {
@@ -41,9 +42,19 @@ interface VolumeInfo {
 
 interface SaleInfo {
   country: string;
-  listPrice: {
+  listPrice?: {
     amount: number;
     currencyCode: string;
   };
   buyLink: string;
+  saleability: "NOT_FOR_SALE" | "FOR_SALE";
+}
+
+interface AccessInfo {
+  epub: {
+    isAvailable: boolean;
+  };
+  pdf: {
+    isAvailable: boolean;
+  };
 }

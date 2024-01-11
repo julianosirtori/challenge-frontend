@@ -1,26 +1,23 @@
-import { Fragment, useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import Filter from "@/components/filters";
-import {
-  Container,
-  Content,
-  ContentResults,
-  ContentResultsCategory,
-  ContentResultsCover,
-  ContentResultsTitle,
-  ContentResultsWrapper,
-} from "./styles";
+import { Filter } from "@/components/filters";
+import { Container, Content } from "./styles";
 import { useInfiniteQueryBooks } from "@/hooks/useInfiniteQueryBooks";
+import { BooksList } from "./partials/BooksList";
 
 export const Search = () => {
-  const [searchParmas] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { ref, inView } = useInView();
+
+  const query = useMemo(() => {
+    return searchParams.get("q") || "";
+  }, [searchParams.get("q")]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQueryBooks({
-      query: searchParmas.get("q") || "",
+      query,
     });
 
   useEffect(() => {
@@ -33,30 +30,7 @@ export const Search = () => {
     <Container>
       <Content>
         <Filter />
-        <ContentResults>
-          {data?.pages.map((page, index) => (
-            <Fragment key={index}>
-              {page.items?.map((book) => (
-                <ContentResultsWrapper key={book.id}>
-                  <ContentResultsCover>
-                    {book.volumeInfo?.imageLinks?.thumbnail && (
-                      <img
-                        src={book.volumeInfo?.imageLinks?.thumbnail}
-                        alt={book.volumeInfo.title}
-                      />
-                    )}
-                  </ContentResultsCover>
-                  <ContentResultsTitle>
-                    <label>{book.volumeInfo.title} </label>
-                  </ContentResultsTitle>
-                  <ContentResultsCategory>
-                    <span>{book.volumeInfo.authors?.join(" ")}</span>
-                  </ContentResultsCategory>
-                </ContentResultsWrapper>
-              ))}
-            </Fragment>
-          ))}
-        </ContentResults>
+        <BooksList data={data} />
         <div>
           <button
             ref={ref}
