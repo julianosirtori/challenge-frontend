@@ -119,7 +119,7 @@ const Search = () => {
             <ResultSearchItem
               key={book.id}
               highlight={indexResultHighlight === index}
-              data-testid="results-search-item"
+              data-testid={`results-search-item-${index}`}
               onClick={() => navigateToSearchPage(book.volumeInfo.title)}
             >
               <span>{book.volumeInfo.title}</span>

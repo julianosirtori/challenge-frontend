@@ -92,10 +92,10 @@ test("should have change the suggestions when input changes values after 250ms",
   fireEvent.focus(input);
   fireEvent.change(input, { target: { value: "senhor dos aneis" } });
   await waitFor(() =>
-    expect(screen.queryAllByTestId("results-search-item").length).toBe(1),
+    expect(screen.getByTestId("results-search").childNodes.length).toBe(2),
   );
   fireEvent.change(input, { target: { value: "Harry Potter" } });
   await waitFor(() =>
-    expect(screen.queryAllByTestId("results-search-item").length).toBe(3),
+    expect(screen.getByTestId("results-search").childNodes.length).toBe(4),
   );
 });
