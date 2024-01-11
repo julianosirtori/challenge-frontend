@@ -42,6 +42,3 @@ test("should have render the desktop container when windows size is more or equa
   const contentFilterElement = screen.getByTestId("container-desktop");
   expect(contentFilterElement).toBeTruthy();
 });
-
-// mockar o hook de useSearchParams
-// verificar como foi chamado o hook do useSearchParams

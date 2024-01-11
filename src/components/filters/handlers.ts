@@ -3,8 +3,6 @@ import { FilterHandler } from "./type";
 
 export const handlers = {
   byRangePrice0To30: (book: Book) => {
-    console.log(book);
-
     return Number(book.saleInfo.listPrice?.amount) <= 30;
   },
   byRangePrice31To50: (book: Book) => {

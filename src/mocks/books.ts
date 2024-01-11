@@ -1,5 +1,44 @@
-import { FetchVolumesResponse } from "@/services/books/types";
+import { Book, FetchVolumesResponse } from "@/services/books/types";
 import { InfiniteData } from "react-query";
+
+export const mockBook: Book = {
+  kind: "books#volume",
+  id: "eVevDwAAQBAJ",
+  etag: "Fa+5RB631kU",
+  selfLink: "https://www.googleapis.com/books/v1/volumes/eVevDwAAQBAJ",
+  volumeInfo: {
+    title: "Box Trilogia O Senhor dos Anéis",
+    authors: ["J.R.R. Tolkien"],
+    publisher: "HARLEQUIN",
+    description:
+      "Embarque numa viagem inesquecível para a Terra-média e tenha os três livros de O Senhor dos Anéis, a obra-prima de J.R.R. Tolkien e um dos maiores clássicos da fantasia, em edições de luxo com capa dura neste box de colecionador! Apesar de ter sido publicado em três volumes – A Sociedade do Anel, As Duas Torres e O Retorno do Rei – desde os anos 1950, O Senhor dos Anéis não é exatamente uma trilogia, mas um único grande romance que só pode ser compreendido em seu conjunto, segundo a concepção de seu autor, J.R.R. Tolkien. Com design cuidadosamente pensado para refletir a unidade da obra e com os desenhos originais feitos por Tolkien para as capas de cada volume, este box reúne os três livros da Saga do Anel e oferece aos leitores uma nova oportunidade de mergulhar no notável mundo da Terra-média.",
+    imageLinks: {
+      smallThumbnail:
+        "http://books.google.com/books/content?id=eVevDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      thumbnail:
+        "http://books.google.com/books/content?id=eVevDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    },
+    language: "pt-BR",
+  },
+  saleInfo: {
+    country: "BR",
+    saleability: "FOR_SALE",
+    listPrice: {
+      amount: 134.9,
+      currencyCode: "BRL",
+    },
+    buyLink:
+      "https://play.google.com/store/books/details?id=eVevDwAAQBAJ&rdid=book-eVevDwAAQBAJ&rdot=1&source=gbs_api",
+  },
+  accessInfo: {
+    epub: {
+      isAvailable: true,
+    },
+    pdf: {
+      isAvailable: false,
+    },
+  },
+};
 
 const data = {
   pages: [
