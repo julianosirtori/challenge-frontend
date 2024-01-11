@@ -1,140 +1,121 @@
-![image](https://assets-global.website-files.com/61155c49f7b752684a9f0584/61201e989ae795462db99155_logo-arvore.svg)
+# Books Store
 
-<div id="user-content-toc">
-  <ul>
-    <summary><h1 style="display: inline-block;">Challenge Frontend</h1></summary>
-  </ul>
-</div>
+## Descrição
 
-## Description
+Este projeto foi desenvolvido para o desafio técnico da Árvore. Segue o link para saber mais:
 
-Este teste técnico fornece uma aplicação já iniciada por um desenvolvedor, ou seja, é um dos desafios que fazem parte do nosso dia-a-dia enquanto time tech na Árvore.
+https://github.com/arvoreeducacao/challenge-frontend.
 
-O desafio em si propõe a construção de uma feature, um campo de busca com autocomplete aplicado.
+Dei continuidade à arquitetura e organização de pastas que continha o projeto. Segui este padrão para novos componentes e funções:
 
-Ainda como parte do desafio é preciso fazer pequenos ajustes de layout (responsividade e/ou ajustes nos comportamentos dos componentes).
-
-<br />
-
-## Requirements
-### Feature Busca com autocomplete aplicado:
-Nossa busca atualmente está sem um autocomplete para ajudar o usuário a encontrar o termo mais relevante a ser pesquisado, e para entregar essa melhoria de experiência se deve contemplar os seguintes critérios:
-
-- Toda vez que o usuário focar no campo de texto e o seu valor mudar, deve mostrar uma lista de sugestões.
-- Toda vez que o input de texto perder o foco (seja clicando fora ou apertando Tab) as sugestões devem desaparecer.
-- Quando o usuário escrever algo no campo de texto, deve fazer uma chamada na API e mostrar as sugestões, atualizando a cada nova mudança, sem a necessidade de clicar no botão de pesquisa ou pressionar ENTER.
-- Quando o usuário começar a escrever o nome do livro, o componente só deverá fazer o trigger de chamada para a API depois de 250ms, evitando chamadas excessivas para a API.
-- Quando a sugestão aparecer na tela e o usuário apontar o mouse para qualquer um dos resultados, a opção que estiver com o cursor do mouse em cima deve ficar em destaque.
-- O resultado da pesquisa além do campo de busca com autocomplete deve ser populado em tela.
-- Testes unitários devem ser desenvolvidos para a nova feature.
-
-<br />
-
-### Integração:
-
-A Home e Página de busca devem ser populada com a [API do google](https://developers.google.com/books/docs/v1/getting_started).
-
-###### Exemplo de chamada pra a API:
-
-`https://www.googleapis.com/books/v1/volumes?q=Query&startIndex=0&maxResults=10`
-
-##### q representa:
-
-_o termo da busca_
-
-##### startIndex representa:
-
-_A posição de partida dentro da lista, default é 0._
-
-##### maxResults representa:
-
-_O número máximo de resultados. O default é 10, e o valor máximo permitido é 40._
-<br />
-
-###### Exemplo de resultado de payload:
-
-```bash
-  "kind": "books#volumes",
-  "totalItems": 200,
-  "items": [
-        { "kind": "books#volumes","id": "0S_uAAAAMAAJ",
-        "etag": "vQmTa+Fhr10",
-        "selfLink": "https://www.googleapis.com/books/v1/volumes/0S_uAAAAMAAJ",
-        "volumeInfo": {
-            "title": "The Adventures of Tom Sawyer",
-            "authors": ["Mark Twain"],
-            "publishedDate": "1965",
-            "description": "\"It's a lazy Mississippi River town, a place where...",
-            "industryIdentifiers": [
-              {"type": "OTHER",
-                "identifier": "UOM:39015002775412"
-              }
-            ]
-        }
-    ]
 ```
-<br />
+├── (nome do component/função)
+    ├── index.tsx
+    ├── types.ts
+    ├── styles.ts
+    ├── hooks.ts
+    ├── constants.ts
+    └── partials
+        └── (nome do component interno)
+            ├── ...
+```
 
-### Layout:
-Como forma de demonstrar o comportamento esperado dos dados que populam a tela da home e página de busca, mockamos os dados no front para permitir, também, melhor entendimento de layout.
-
-Abaixo estão alguns ajustes esperados no layout:
-
-- Aplicar o layout responsivo em todas as telas.
-- O filtro de pesquisa precisa estar responsivo, hoje ele funciona apenas para a versão desktop.
-- Segue abaixo os valores de media queries que utilizamos na Árvore como referência:
-    - tablet: 768px
-    - desktop: 992px
-    - desktop Large: 1216px
-    - desktop Xlarge: 1408px
+A única diferença que adicionei uma pasta de `partials` para alguns components, nela podemos adicionar partes dos components que são usadas apenas por eles, desta forma os components ficam mais enxutos facilitando assim a manutenção.
 
 
-**Obs.: O componente carrossel faz uso de uma lib terceira (react-slick), portanto ele não deve ser contemplado como ajuste de layout/comportamento de componente.**
+Neste README irei detalhar o que foi desenvolvido e compartilhar alguns links de referencia.
 
-<br />
+## Features e improvements
 
-### Filtro de pesquisa:
-O filtro de pesquisa não está 100% funcional, é preciso fazer alguns ajustes para que ele possa funcionar como esperado do componente. Não há a necessidade de fazer a integração da API para esse caso e muito menos testes unitários, porém se o candidato desejar fazer, é um plus.
+Foi desenvolvido 3 principais features
 
-- Os filtros de pesquisa devem popular a página de pesquisa de acordo com os filtros selecionados pelo usuário.
-- O filtro de pesquisa deve contemplar os seguintes campos:
-  - **1 - Preço**
-    - de `R$0` até `R$30`
-    - de `R$31` até `R$50`
-    - de `R$51` até `R$100`
-    - Mais de `R$100`
-   - **2 - Disponibilidade para venda**
-     - disponível
-     - não disponível
-   - **3 - Formatos disponíveis**
-     - Epub
-     - PDF
+* Search com auto complete
+* Integração com o Google Api Books na tela de home e search
+* Filtro de pesquisa
+* Infinite Scroll na pagina de search
+
+Também foi feito algumas melhorias.
+
+* Adicionado linter, code formatter e .editorconfig
+* Adição git hooks
+* Adicionado roteamento
+* Adicionado testes e2e
+* Melhorias no layout
+* Corrigido tipagens
+* Adicionado .nvmrc
+* Adicionado path alias
+* Melhorias na semântica
+
+Abaixo irei descrever alguns dos items citados acima:
+
+### Search com auto complete
+
+O component pode ser encontrado nesse endereço: `src/components/search/*`.
+
+O comportamento dele, além dos requisitos mínimos proposto pelo desafio, implementei alguns comportamentos semelhante da barra de busca do google, podendo navegar entre as sugestões através dos botões direcionais do teclado. Para implementar esse comportamento  criei um handler para o evento `onKeyUpCapture` do input.
+
+Para compartilhar o termo da pesquisa entre telas optei por usar `search params` desta forma o state da aplicação pode ser compartilhado através do link. Neste link (que encontrei rapidamente no google) tem mais detalhes sobre essa técnica: https://cgarethc.medium.com/using-react-router-searchparams-to-manage-filter-state-for-a-list-e515e8e50166  
+
+### Integração com o Google Api Books na tela de home e search
+
+#### Integração
+
+Para realizar a integração, acabei criando uma pasta de `services` onde se encontra o fetch para as chamadas da api.
+
+Optei por adicionar o `react-query`, desta forma a aplicação possui uma camada de cache tornando a aplicação muito mais rapida e fluida para o usuario.
+
+Os hooks que utilizam o react-query podem ser encontrados nesse endereço `src/hooks` e eles devem possuir essa nomenclatura `use(Query|InfiniteQuery)[service]`.
+
+Separando os services dos hooks com react-queries permitimos que o desenvolvedor possa chamar diretamente o service caso necessário, não utilizando a camada de cache.
+
+#### Google API Books
+
+Olhando a documentação do google api books optei por enviando alguns search params como default:
+
+* `printType: "books"`: Quero que ele retorne apenas livros
+* `langRestrict: "pt"`: Por enquanto nossa aplicação não é localizada, por conta disso optei por ele retornar apenas `pt`
 
 
-**Obs.: Candidatos a nível PLENO devem incluir os requisitos do filtro de pesquisa contemplados na seção [nice to have](#nice-to-have) desse documento.**
-<br />
-<br />
+### Filtro de pesquisa
 
-## Submit for review:
-Para que o teste possa ser avaliado, é importante que o candidato:
-- Suba o teste em um repositório no github.
-- Caso o repositório esteja privado, compartilhar o repo com os seguintes desenvolvedores: **@thaisquintana** e **@caiodsc**.
-- Mantenha o histórico de commits visíveis no repo.
-- Adicione um README para instruir o avaliador a rodar a aplicação.
-<br />
+O Google API Books não fornece a opção de filtrar por formato, disponibilidade e preço (não consegui encontrar nada na documentação), porem esses são campos retornados pela API, desta forma os filtros são aplicados apenas localmente.
 
-## Nice to have
+Os filtros funcionam de uma maneira semelhante ao componente do `Search` compartilhando o estado pelo `search params`. Esse comportamento você pode encontrar no partial `ContentFilter` do component `Search`;
 
-#### Filtro de pesquisa:
-- Testes unitários aplicados ao componente filtro de pesquisa.
-- Diferenciação do comportamento do componente quando responsivo.
+Ele também possui um **comportamento diferente para mobile**, quando o width for menor que 768 ele renderizará um botão para abrir os filtros, eles irão abrir em tela cheia, e ao selecionar um filtro ele fechará a tela de filtros. 
 
-#### Performance:
-- Adicionar uma camada de cache para os dados populados no campo de busca com autocomplete.
-- Scroll infinito na página de busca.
+#### Logica de filtragem
 
-#### Cobertura de testes com e2e:
-- Teste aplicado no campo de busca com o redirecionamento para a página de busca.
-- Teste aplicado na página de busca com dados populados pela API como resultados da pesquisa feita pelo usuário (com e sem filtro aplicado na busca).
+Para a implementação dos filtros foi utilizado um pattern chamado `Chain of Responsibility Design` que consiste de uma cadeia de handlers. Isso permitiu desacoplar os filtros e deixa-los independentes.
 
+Você pode ver a implementação desse pattern aqui: `/src/components/filters/handlers.ts`.
+
+Uma vez que o component `Filter` adicionou os `search params`, o component `BooksList` irá buscar esses `search params` e será passado para a função `filterBooks` juntamente com os dados q recebemos da API.
+
+Dentro da função `filterBooks` irá filtrar apenas os handlers q estão ativos no search params e realizar o filtro.
+
+#### Como adicionar novos filtros
+
+> **Atenção**
+  >
+  > Atualmente o filtro suporta apenas checkbox
+
+Para adicionar um novo filtro você precisará editar dois arquivos:
+
+* src/components/filters/constants.ts
+* src/components/filters/handlers.ts
+
+No arquivo constants você adicionará o novo filtro com os possíveis itens.
+
+E no arquivo handlers deverá adicionar a regra desse filtro.
+
+***Atenção: O valor handler do novo filtro deverá ser o mesmo nome da função que foi adicionada no campo handlers.***
+
+### Infinite Scroll na pagina de search
+
+Na pagina de search foi adicionado adicionado um infinite scroll. Para essa implementação acabei adicionado um botão no fim da listagem de livros, quando o usuário visualizar o botão é feito um novo fetch.
+
+Para implementar isso foi utilizado o `useInfiniteQuery` do `react-query` que fornece alguns métodos como o `fetchNextPage` e propriedades como o `hasNextPage` que aceleram o desenvolvimento.
+
+Você pode conferir nesse endereço a implementação: `src/view/Search/index.tsx`.
 
