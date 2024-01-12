@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import { Container } from "./styles";
+import { Container, Main } from "./styles";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { languages } from "@/constants";
@@ -11,7 +11,9 @@ export function Root() {
   return (
     <Container>
       <Header />
-      <Outlet />
+      <Main>
+        <Outlet />
+      </Main>
       <Footer
         text={stringsFooter.footerAllrightsReserved}
         privacyText={stringsFooter.privacyAndPolicy}

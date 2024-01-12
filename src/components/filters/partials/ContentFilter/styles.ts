@@ -5,7 +5,7 @@ export const Content = styled.div`
   width: 260px;
   display: block;
 `;
-export const ContentTitle = styled.p`
+export const ContentTitle = styled.span`
   color: #9eaeb7;
   font-size: 16px;
   font-weight: 700;
@@ -24,7 +24,7 @@ export const Button = styled.button`
   background-color: #adb7bf;
   margin: 16px 0;
 `;
-export const FilterTitle = styled.p`
+export const FilterTitle = styled.span`
   color: #053b4b;
   font-size: 16px;
   font-weight: 700;

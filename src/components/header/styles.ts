@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
   background-color: #45d0c1;
   padding: 16px;
   width: 100%;
@@ -25,7 +25,7 @@ export const Content = styled.div`
   }
 `;
 
-export const ContentUser = styled.div`
+export const ContentUser = styled.nav`
   display: none;
   margin-left: 16px;
   @media (min-width: 992px) {

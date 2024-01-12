@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.footer`
   background-color: #fff;
   width: 100%;
   border-top: 1px solid #dee1e6;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
-    bottom: -23px;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 2;
