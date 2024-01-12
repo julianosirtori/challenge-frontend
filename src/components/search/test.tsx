@@ -39,7 +39,7 @@ export const handlers = [
     return HttpResponse.json({
       kind: "books#volumes",
       totalItems: 4,
-      items: q === "senhor dos aneis" ? [books[0]] : books,
+      items: q === "intitle:senhor dos aneis" ? [books[0]] : books,
     });
   }),
 ];

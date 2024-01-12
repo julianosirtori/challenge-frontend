@@ -11,7 +11,7 @@ export function useSearch({ disabled }: UseSearchProps) {
 
   const { data = { items: [] }, status } = useQueryBooks(
     {
-      query: debounceSearch,
+      query: `intitle:${debounceSearch}`,
     },
     {
       enabled: !!debounceSearch && disabled,

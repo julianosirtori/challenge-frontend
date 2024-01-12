@@ -40,7 +40,10 @@ const Search = () => {
   };
 
   const incrementHighlight = () => {
-    setIndexResultHighlight((highlight = 0) => {
+    setIndexResultHighlight((highlight) => {
+      if (highlight === undefined) {
+        return 0;
+      }
       if (result.length <= highlight) {
         return highlight;
       }
