@@ -2,11 +2,11 @@
 
 ## Descrição
 
-Este projeto foi desenvolvido para o desafio técnico da Árvore. Segue o link para saber mais:
+Este projeto foi desenvolvido para o desafio técnico da Árvore. [Aqui está o link](https://github.com/arvoreeducacao/challenge-frontend) para saber mais.
 
-https://github.com/arvoreeducacao/challenge-frontend.
+Dei continuidade à arquitetura e organização de pastas que continha o projeto. Segui este padrão para novos componentes e funções.
 
-Dei continuidade à arquitetura e organização de pastas que continha o projeto. Segui este padrão para novos componentes e funções:
+A única diferença é que adicionei uma pasta de `partials` para alguns components. Nela, podemos adicionar partes dos components que são usadas apenas por eles. Desta forma, os components ficam mais enxutos, facilitando assim a manutenção.
 
 ```
 ├── (nome do component/função)
@@ -20,24 +20,21 @@ Dei continuidade à arquitetura e organização de pastas que continha o projeto
             ├── ...
 ```
 
-A única diferença que adicionei uma pasta de `partials` para alguns components, nela podemos adicionar partes dos components que são usadas apenas por eles, desta forma os components ficam mais enxutos facilitando assim a manutenção.
+Neste README, irei detalhar o que foi desenvolvido e compartilhar alguns links de referência.
 
+## Features e melhorias
 
-Neste README irei detalhar o que foi desenvolvido e compartilhar alguns links de referencia.
+Foram desenvolvidas três principais features:
 
-## Features e improvements
+* **Search com auto complete**
+* **Integração com o Google Api Books na tela de home e search**
+* **Filtro de pesquisa**
+* **Infinite Scroll na página de search**
 
-Foi desenvolvido 3 principais features
-
-* Search com auto complete
-* Integração com o Google Api Books na tela de home e search
-* Filtro de pesquisa
-* Infinite Scroll na pagina de search
-
-Também foi feito algumas melhorias.
+Também foram feitas algumas melhorias.
 
 * Adicionado linter, code formatter e .editorconfig
-* Adição git hooks
+* Adição de git hooks
 * Adicionado roteamento
 * Adicionado testes e2e
 * Melhorias no layout
@@ -45,6 +42,8 @@ Também foi feito algumas melhorias.
 * Adicionado .nvmrc
 * Adicionado path alias
 * Melhorias na semântica
+* Corrigido warnings do styled-components
+* Criado CI/CD
 
 Abaixo irei descrever alguns dos items citados acima:
 
@@ -54,7 +53,7 @@ O component pode ser encontrado nesse endereço: `src/components/search/*`.
 
 O comportamento dele, além dos requisitos mínimos proposto pelo desafio, implementei alguns comportamentos semelhante da barra de busca do google, podendo navegar entre as sugestões através dos botões direcionais do teclado. Para implementar esse comportamento  criei um handler para o evento `onKeyUpCapture` do input.
 
-Para compartilhar o termo da pesquisa entre telas optei por usar `search params` desta forma o state da aplicação pode ser compartilhado através do link. Neste link (que encontrei rapidamente no google) tem mais detalhes sobre essa técnica: https://cgarethc.medium.com/using-react-router-searchparams-to-manage-filter-state-for-a-list-e515e8e50166  
+Para compartilhar o termo da pesquisa entre telas optei por usar `search params` desta forma o state da aplicação pode ser compartilhado através do link. Neste link (que encontrei rapidamente no google) tem mais detalhes sobre essa técnica: [Using React Router SearchParams to Manage Filter State for a List](https://cgarethc.medium.com/using-react-router-searchparams-to-manage-filter-state-for-a-list-e515e8e50166)  
 
 ### Integração com o Google Api Books na tela de home e search
 
@@ -62,7 +61,7 @@ Para compartilhar o termo da pesquisa entre telas optei por usar `search params`
 
 Para realizar a integração, acabei criando uma pasta de `services` onde se encontra o fetch para as chamadas da api.
 
-Optei por adicionar o `react-query`, desta forma a aplicação possui uma camada de cache tornando a aplicação muito mais rapida e fluida para o usuario.
+Optei por adicionar o `react-query`, desta forma a aplicação possui uma camada de cache tornando a aplicação muito mais rápida e fluida para o usuário.
 
 Os hooks que utilizam o react-query podem ser encontrados nesse endereço `src/hooks` e eles devem possuir essa nomenclatura `use(Query|InfiniteQuery)[service]`.
 
@@ -119,3 +118,17 @@ Para implementar isso foi utilizado o `useInfiniteQuery` do `react-query` que fo
 
 Você pode conferir nesse endereço a implementação: `src/view/Search/index.tsx`.
 
+### Criado CI/CD
+
+Foi criado dois workflows no github:
+
+* unit-tets.yml: executa testes unitários e de integração
+* productions.yml: caso o workflow de testes passou ele irá rodar esse workflow que irá realizar o release do projeto.
+
+
+## Sugestões de melhorias
+
+Abaixo algumas sugestões de melhorias que por conta do tempo não consegui chegar a atuar.
+
+* Adicionar um theme ao projeto, centralizando em um lugar todas as cores e configurações de fonte.
+* Melhorar coverage de testes unitários no projeto.
