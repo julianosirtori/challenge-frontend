@@ -1,5 +1,25 @@
 # Books Store
 
+<details>
+  <summary>Sumário</summary>
+  <ul>
+    <li>
+      <a href="#descri%C3%A7%C3%A3o">Descrição</a>
+    </li>
+    <li><a href="#features-e-melhorias">Features e Melhorias</a></li>
+      <ul>
+        <li><a href="#search-com-auto-complete">Search com auto complete</a></li>
+        <li><a href="#integra%C3%A7%C3%A3o-com-o-google-api-books-na-tela-de-home-e-search">Integração com o Google Api Books na tela de home e search</a></li>
+        <li><a href="#filtro-de-pesquisa">Filtro de pesquisa</a></li>
+        <li><a href="#infinite-scroll-na-pagina-de-search">Infinite Scroll na pagina de search</a></li>
+        <li><a href="#criado-cicd">Criado CI/CD</a></li>
+        <li><a href="#testes-e2e">Testes e2e</a></li>
+      </ul>
+    </li>
+    <li><a href="#sugest%C3%B5es-de-melhorias">Sugestões de melhorias</a></li>
+  </ul>
+</details>
+
 ## Descrição
 
 Este projeto foi desenvolvido para o desafio técnico da Árvore. [Aqui está o link](https://github.com/arvoreeducacao/challenge-frontend) para saber mais.
@@ -131,7 +151,7 @@ Foi criado dois workflows no github:
 Para os testes de integração optei em utilizar o `playwright`, eu tenho menos experiencia com ele, mas nos meus testes ele tem uma performance maior que o cypress.
 
 Nos testes de integração acabei interceptando e mockando a chamada para a api do google, desta forma testamos apenas o que podemos controlar, essa técnica também é recomendada pela própria documentação do `playwright`:
- 
+
 https://playwright.dev/docs/best-practices#avoid-testing-third-party-dependencies 
 
 
