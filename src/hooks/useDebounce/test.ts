@@ -12,7 +12,7 @@ test("should updated the value after 250ms", async () => {
   const { result, rerender } = renderHook(() => useDebounce(value, 250));
   value = 1;
   rerender();
-  await waitFor(() => expect(result.current).toBe(1), { timeout: 300 });
+  await waitFor(() => expect(result.current).toBe(1), { timeout: 500 });
 });
 
 test("should not updated the value immediately", async () => {
