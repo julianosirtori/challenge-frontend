@@ -1,14 +1,18 @@
-import { expect, test } from "vitest";
-import { renderHook, waitFor } from "@testing-library/react";
+import { expect, test, afterEach } from "vitest";
+import { renderHook, waitFor, cleanup } from "@testing-library/react";
 
 import { useDebounce } from "./index";
+
+afterEach(() => {
+  cleanup();
+});
 
 test("should updated the value after 250ms", async () => {
   let value = 0;
   const { result, rerender } = renderHook(() => useDebounce(value, 250));
   value = 1;
   rerender();
-  await waitFor(() => expect(result.current).toBe(value), { timeout: 300 });
+  await waitFor(() => expect(result.current).toBe(1), { timeout: 300 });
 });
 
 test("should not updated the value immediately", async () => {
@@ -16,5 +20,5 @@ test("should not updated the value immediately", async () => {
   const { result, rerender } = renderHook(() => useDebounce(value, 250));
   value = 1;
   rerender();
-  expect(result.current).not.toBe(value);
+  expect(result.current).not.toBe(1);
 });
