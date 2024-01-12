@@ -4,7 +4,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   workflow_run:
-    workflows: ["Playwright Tests", "Runs All Unit tests"]
+    workflows: ["Runs All Tests"]
     branches: [main]
     types: 
       - completed
