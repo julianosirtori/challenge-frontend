@@ -1,4 +1,14 @@
 import { test, expect } from "@playwright/test";
+import { querySenhorDosAneis } from "../src/mocks/books";
+
+test.beforeEach(async ({ page }) => {
+  await page.route("**/books/v1/volumes**", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify(querySenhorDosAneis),
+    }),
+  );
+});
 
 test("has title", async ({ page }) => {
   await page.goto("/");
@@ -22,9 +32,7 @@ test("should have to close results if focus out ", async ({ page }) => {
 
   await inputElement.focus();
   await inputElement.fill("senhor dos aneis");
-  await page.waitForTimeout(2000);
   await inputElement.blur();
-  await page.waitForTimeout(500);
   expect(
     await page.locator('div[data-testid="results-search-item-1"]').count(),
   ).toBe(0);
@@ -38,7 +46,6 @@ test("should have to navigate to search page when click on the suggestions ", as
 
   await inputElement.focus();
   await inputElement.fill("senhor dos aneis");
-  await page.waitForTimeout(2000);
   const suggestionElement = page.getByTestId("results-search-item-0");
   await suggestionElement.click();
   await page.waitForURL(/search\?q=/gm);
@@ -58,8 +65,11 @@ test("should have to navigate between suggestions by arrows keys when search inp
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("ArrowUp");
-  const suggestionElement = page.getByTestId("results-search-item-2");
-  expect(suggestionElement).toHaveCSS("background-color", "rgb(64, 106, 118)");
+  const suggestionElement = page.getByTestId("results-search-item-1");
+  await expect(suggestionElement).toHaveCSS(
+    "background-color",
+    "rgb(64, 106, 118)",
+  );
 });
 
 test("should have to navigate to search page when clicked enter and search input is focused", async ({
@@ -70,7 +80,7 @@ test("should have to navigate to search page when clicked enter and search input
 
   await inputElement.focus();
   await inputElement.fill("senhor dos aneis");
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(3000);
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("ArrowDown");
@@ -88,9 +98,7 @@ test("should have to close suggestion when Escape is clicked", async ({
 
   await inputElement.focus();
   await inputElement.fill("senhor dos aneis");
-  await page.waitForTimeout(2000);
   await page.keyboard.press("Escape");
-  await page.waitForTimeout(500);
   expect(
     await page.locator('div[data-testid="results-search-item-1"]').count(),
   ).toBe(0);

@@ -126,6 +126,15 @@ Foi criado dois workflows no github:
 * productions.yml: caso o workflow de testes passou ele irá rodar esse workflow que irá realizar o release do projeto.
 
 
+### Testes e2e
+
+Para os testes de integração optei em utilizar o `playwright`, eu tenho menos experiencia com ele, mas nos meus testes ele tem uma performance maior que o cypress.
+
+Nos testes de integração acabei interceptando e mockando a chamada para a api do google, desta forma testamos apenas o que podemos controlar, essa técnica também é recomendada pela própria documentação do `playwright`:
+ 
+https://playwright.dev/docs/best-practices#avoid-testing-third-party-dependencies 
+
+
 ## Sugestões de melhorias
 
 Abaixo algumas sugestões de melhorias que por conta do tempo não consegui chegar a atuar.

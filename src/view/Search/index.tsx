@@ -21,7 +21,7 @@ export const Search = () => {
     });
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !isFetchingNextPage) {
       fetchNextPage();
     }
   }, [inView]);
@@ -31,20 +31,22 @@ export const Search = () => {
       <Content>
         <Filter />
         <BooksList data={data} />
-        <div>
-          <button
-            ref={ref}
-            data-testid="button-load-more"
-            onClick={() => fetchNextPage()}
-            disabled={!hasNextPage || isFetchingNextPage}
-          >
-            {isFetchingNextPage
-              ? "Loading more..."
-              : hasNextPage
-                ? "Load Newer"
-                : "Nothing more to load"}
-          </button>
-        </div>
+        {data && (
+          <div>
+            <button
+              ref={ref}
+              data-testid="button-load-more"
+              onClick={() => fetchNextPage()}
+              disabled={!hasNextPage || isFetchingNextPage}
+            >
+              {isFetchingNextPage
+                ? "Loading more..."
+                : hasNextPage
+                  ? "Load Newer"
+                  : "Nothing more to load"}
+            </button>
+          </div>
+        )}
       </Content>
     </Container>
   );

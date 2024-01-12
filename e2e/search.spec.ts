@@ -1,11 +1,20 @@
 import { test, expect } from "@playwright/test";
+import { queryJulioVerne } from "../src/mocks/books";
+
+test.beforeEach(async ({ page }) => {
+  await page.route("**/books/v1/volumes**", (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify(queryJulioVerne),
+    }),
+  );
+});
 
 test("should have show results of search", async ({ page }) => {
   await page.goto("/search?q=inauthor:%22J%C3%BAlio%20Verne%22");
   const inputElement = page.getByTestId("search-input");
-
   expect(await inputElement.inputValue()).toEqual('inauthor:"Júlio Verne"');
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
   expect(await page.getByTestId("book-item").count()).toBe(20);
 });
 
@@ -13,9 +22,8 @@ test("should have fetch again if scrolling until the end of page and show items 
   page,
 }) => {
   await page.goto("/search?q=inauthor:%22J%C3%BAlio%20Verne%22");
-  await page.waitForTimeout(2000);
   await page.getByTestId("button-load-more").scrollIntoViewIfNeeded();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
   expect(await page.getByTestId("book-item").count()).toBe(40);
 });
 
@@ -25,7 +33,7 @@ test("should have apply filter when clicked on filter item", async ({
   await page.goto("/search?q=inauthor:%22J%C3%BAlio%20Verne%22");
   const filterComponent = page.getByTestId("filter-checkbox-byRangePrice0To30");
   filterComponent.click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
   expect(await page.getByTestId("book-item").count()).toBe(14);
 });
 
@@ -46,7 +54,7 @@ test("shouldn't have show the filters if is mobile viewport", async ({
   });
   await page.goto("/search?q=inauthor:%22J%C3%BAlio%20Verne%22");
   const elementContainerMobile = page.getByTestId("container-mobile");
-  expect(elementContainerMobile).not.toBeVisible();
+  await expect(elementContainerMobile).not.toBeVisible();
 });
 
 test("should apply filter if is mobile viewport", async ({ page }) => {
@@ -62,6 +70,6 @@ test("should apply filter if is mobile viewport", async ({ page }) => {
   await expect(elementContainerMobile).toBeVisible();
   const filterComponent = page.getByTestId("filter-checkbox-byRangePrice0To30");
   filterComponent.click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
   expect(await page.getByTestId("book-item").count()).toBe(14);
 });
