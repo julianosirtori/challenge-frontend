@@ -39,7 +39,7 @@ export function Shelf({ title, query, isHighlight }: CategoryProps) {
         <TitleCategory>{title}</TitleCategory>
         <Content>
           <Carousel settings={settings} spaceBetweenItems="16px">
-            {data?.items.map((book) => (
+            {data?.items?.map((book) => (
               <ContentItem key={book.id}>
                 <img
                   src={book.volumeInfo.imageLinks?.thumbnail}

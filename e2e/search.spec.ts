@@ -14,7 +14,7 @@ test("should have fetch again if scrolling until the end of page and show items 
 }) => {
   await page.goto("/search?q=inauthor:%22J%C3%BAlio%20Verne%22");
   await page.waitForTimeout(2000);
-  page.mouse.wheel(0, 2000);
+  await page.getByTestId("button-load-more").scrollIntoViewIfNeeded();
   await page.waitForTimeout(2000);
   expect(await page.getByTestId("book-item").count()).toBe(40);
 });
@@ -33,7 +33,7 @@ test("should have show filters items actives if has search params", async ({
   page,
 }) => {
   await page.goto("/search?q=inauthor%3A%22J%C3%BAlio+Verne%22&byPDFFormat=1");
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(3000);
   expect(await page.getByTestId("book-item").count()).toBe(16);
 });
 

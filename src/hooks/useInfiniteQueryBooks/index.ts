@@ -15,14 +15,14 @@ export function useInfiniteQueryBooks(params: FetchVolumesParams) {
     },
     getPreviousPageParam: (firstPage, allPages) => {
       const totalItems = allPages.reduce(
-        (acc, curr) => curr.items?.length + acc,
+        (acc, curr) => (curr.items ? curr.items.length + acc : acc),
         0,
       );
       return firstPage.items ? totalItems : undefined;
     },
     getNextPageParam: (lastPage, allPages) => {
       const totalItems = allPages.reduce(
-        (acc, curr) => curr.items?.length + acc,
+        (acc, curr) => (curr.items ? curr.items.length + acc : acc),
         0,
       );
       return lastPage.items ? totalItems : undefined;

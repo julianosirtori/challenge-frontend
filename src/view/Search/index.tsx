@@ -34,6 +34,7 @@ export const Search = () => {
         <div>
           <button
             ref={ref}
+            data-testid="button-load-more"
             onClick={() => fetchNextPage()}
             disabled={!hasNextPage || isFetchingNextPage}
           >

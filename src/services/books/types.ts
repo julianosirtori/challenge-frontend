@@ -15,7 +15,7 @@ export type FetchVolumesQueryParams = {
 export type FetchVolumesResponse = {
   kind: string;
   totalItems: number;
-  items: Book[];
+  items?: Book[];
 };
 
 export interface Book {
